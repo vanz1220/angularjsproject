@@ -3,19 +3,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
 
-    <div>
-        <div ng-app="myApp" ng-controller="raceCtrl"> 
+    <div ng-app="myApp" >
+        <div ng-controller="raceCtrl"> 
             <select name="venue" id="venue">
-                <option ng-repeat="x in myData"> {{x.selectionId}} </option>
+                <option ng-repeat="y in myData1"> {{y.venue}} </option>
             </select>
             <select name="marketid" id="marketid">
-                <option ng-repeat="x in myData"> {{x.name}} </option>
+                <option ng-repeat="y in myData1"> {{y.marketId}} </option>
+            </select>
+            <select name="venue" id="venue">
+                <option ng-repeat="x in myData2"> {{x.selectionId}} </option>
+            </select>
+            <select name="marketid" id="marketid">
+                <option ng-repeat="x in myData2"> {{x.name}} </option>
             </select>
             <select name="trainer" id="trainer">
-                <option ng-repeat="x in myData"> {{x.trainer}} </option>
+                <option ng-repeat="x in myData2"> {{x.trainer}} </option>
             </select>
             <select name="rank" id="rank">
-                <option ng-repeat="x in myData"> {{x.number}} </option>
+                <option ng-repeat="x in myData2"> {{x.number}} </option>
             </select>
         </div>
     </div>
