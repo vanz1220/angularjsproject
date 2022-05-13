@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<select name="venue" id="venue">
+    <option ng-repeat="x in myData"> {{x.venue}} </option>
+</select>
+
+</div>
+<script src="index.js"></script>
+
+</body>
+</html>
