@@ -15,11 +15,12 @@
         
         <div class="row" data-ng-controller="ctrl" data-ng-app="app" style="margin: 10px;">
             <div style="display: flex; margin: 15px">
-                <select class="form-control" ng-change="getdetails()" ng-model="x" ng-options="item as item.venue for item in myData1" data-ng-init="loadData()" style="width: 200px;">
+                <input type="date" ng-model="datedetails" ng-change="getdatedetails()" id="t" value="" />
+                <select class="form-control" ng-change="getdetails()" ng-model="x" ng-options="item as item.venue for item in myData1" style="width: 200px;">
                     <option value="" selected >Select a Venue</option>
                     <option value="" ></option>
                  </select>
-                 <input type="text" id="marketid" value="{{ x.marketId }}"/>
+                 <input hidden type="text" id="marketid" value="{{ x.marketId }}"/>
             </div>
             <div class="col-md-8">
                 <div class="panel panel-primary">

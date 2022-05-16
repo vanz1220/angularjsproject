@@ -1,3 +1,5 @@
+
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -17,12 +19,23 @@ angular.module('app', [])
       
          $scope.runnersList = [];
 
-         $scope.loadData = function(){
-            $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ formatDate(Date())).then(function (response) {
+         $scope.getdatedetails = function () {
+            $scope.day = $scope.datedetails;
+            $scope.finaldate = formatDate($scope.day);
+            console.log("DAY: ",$scope.finaldate);
+
+            $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ $scope.finaldate).then(function (response) {
                 $scope.myData1 = response.data.races;
                 console.log("Races: ",$scope.myData1);
             })
-         }
+        }
+
+        //  $scope.loadData = function(){
+        //     $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ $scope.finaldate).then(function (response) {
+        //         $scope.myData1 = response.data.races;
+        //         console.log("Races: ",$scope.myData1);
+        //     })
+        //  }
          $scope.getdetails = function () {
           $scope.xvenue = $scope.x.venue;
           $scope.xmarketid = $scope.x.marketId;
