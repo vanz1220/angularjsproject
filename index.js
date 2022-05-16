@@ -1,9 +1,35 @@
-var app = angular.module('app', []);
-app.controller('ctrl', function($scope, $http) {
-  $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date=2022-05-13").then(function (response) {
-      $scope.myData1 = response.data.races;
-  });
-  $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId=1.199021059").then(function (response) {
-      $scope.myData2 = response.data.runners;
-  });
-});
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+
+}
+angular.module('app', [])
+    .controller('ctrl', function($scope, $http){
+      
+         $scope.runnersList = [];
+
+         $scope.loadData = function(){
+            $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ formatDate(Date())).then(function (response) {
+                $scope.myData1 = response.data.races;
+                console.log("Races: ",$scope.myData1);
+            })
+         }
+         $scope.getdetails = function () {
+          $scope.xvenue = $scope.x.venue;
+          $scope.xmarketid = $scope.x.marketId;
+
+          $http.get('https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(data){
+                $scope.runnersList = data.data.runners;
+                console.log("Runners: ",$scope.runnersList);
+            })
+        }
+    })
