@@ -20,13 +20,12 @@ angular.module('app', [])
          $scope.runnersList = [];
 
          $scope.getdatedetails = function () {
-            $scope.day = $scope.datedetails;
-            $scope.finaldate = formatDate($scope.day);
-            console.log("DAY: ",$scope.finaldate);
+            $scope.finaldate = formatDate($scope.datedetails);
+            //console.log("DAY: ",$scope.finaldate);
 
             $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ $scope.finaldate).then(function (response) {
                 $scope.myData1 = response.data.races;
-                console.log("Races: ",$scope.myData1);
+                //console.log("Races: ",$scope.myData1);
             })
         }
 
@@ -36,7 +35,7 @@ angular.module('app', [])
 
           $http.get('https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(data){
                 $scope.runnersList = data.data.runners;
-                console.log("Runners: ",$scope.runnersList);
+                //console.log("Runners: ",$scope.runnersList);
             })
         }
     })
