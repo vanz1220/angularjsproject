@@ -30,12 +30,6 @@ angular.module('app', [])
             })
         }
 
-        //  $scope.loadData = function(){
-        //     $http.get("https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ $scope.finaldate).then(function (response) {
-        //         $scope.myData1 = response.data.races;
-        //         console.log("Races: ",$scope.myData1);
-        //     })
-        //  }
          $scope.getdetails = function () {
           $scope.xvenue = $scope.x.venue;
           $scope.xmarketid = $scope.x.marketId;
