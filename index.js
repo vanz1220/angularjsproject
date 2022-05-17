@@ -17,9 +17,10 @@ function formatDate(date) {
 angular.module('app', [])
     .controller('ctrl', function($scope, $http){
       
-         $scope.runnersList = [];
+        $scope.myvalue = false;
 
-         $scope.getdatedetails = function () {
+        $scope.getdatedetails = function () {
+            $scope.myvalue = false;
             $scope.finaldate = formatDate($scope.datedetails);
             //console.log("DATE: ",$scope.finaldate);
 
@@ -30,12 +31,10 @@ angular.module('app', [])
         }
 
          $scope.getdetails = function () {
-          $scope.xmarketid = $scope.x.marketId;
-          
-          $http.get('https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(response1){
+                $scope.xmarketid = $scope.x.marketId;
+                $http.get('https://hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(response1){
                 $scope.runnersList = response1.data.runners;
                 //console.log("Runners: ",$scope.runnersList);
-                
-            })
+                })
         }
     })
