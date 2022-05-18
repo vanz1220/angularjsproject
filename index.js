@@ -18,8 +18,6 @@ angular.module('app', [])
         $scope.myvalue = false;
         $scope.myvalue2 = false;
 
-        
-
         $scope.getdatedetails = function () {
             $scope.myvalue = false;
             $scope.myvalue2 = false;
@@ -43,6 +41,9 @@ angular.module('app', [])
                         $scope.msg = "";
                     }
             })
+        }
+        $scope.selVal = function (ele) {
+            $scope.awit = ele.value;
         }
 
          $scope.getdetails = function () {
@@ -103,7 +104,7 @@ angular.module('app', [])
 
                 })
         }
-
+        
         $scope.updateData = function(id, rate){  
             $http.get('https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/UpdateRating.php?selectionId='+ id +'&b4y_rating='+ rate).then(function(response1){
                 
