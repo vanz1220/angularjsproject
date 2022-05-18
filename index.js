@@ -42,9 +42,6 @@ angular.module('app', [])
                     }
             })
         }
-        $scope.selVal = function (ele) {
-            $scope.awit = ele.value;
-        }
 
          $scope.getdetails = function () {
                 $scope.xmarketid = $scope.x.marketId;
