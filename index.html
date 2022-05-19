@@ -83,13 +83,13 @@
                                 <td>{{runner.position}}</td>
                                 <td>{{runner.status}}</td>
                                 <td>
-                                <select id="groupvalue" [(ngModel)]="selectedGroup" >
+                                <select ng-model="selectedGroup">
                                     <option value="{{runner.b4y_rating}}" selected="selected">{{runner.b4y_rating}}</option>
                                     <option data-ng-repeat="group in groups" [ngValue]="group">{{group.value}}</option>
                                 </select>
                                 </td>
                                 <td>
-                                    <button ng-click="updateData(runner.selectionId, group.value)" class="btn btn-info btn-xs">Update</button>
+                                    <button ng-click="updateData(runner.selectionId, selectedGroup)" class="btn btn-info btn-xs">Update</button>
                                 </td>
                             </tr>
                         </tbody>
