@@ -84,8 +84,8 @@
                                 <td>{{runner.status}}</td>
                                 <td>
                                 <select ng-model="selectedGroup">
-                                    <option value="{{runner.b4y_rating}}" selected="selected">{{runner.b4y_rating}}</option>
                                     <option data-ng-repeat="group in groups" [ngValue]="group">{{group.value}}</option>
+                                    <option value="{{runner.b4y_rating}}" selected="selected">{{runner.b4y_rating}}</option>
                                 </select>
                                 </td>
                                 <td>
@@ -95,6 +95,7 @@
                         </tbody>
                     </table>
                 </div>
+                
             </div>
         </div>
     </body>

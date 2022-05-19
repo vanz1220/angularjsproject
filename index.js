@@ -50,10 +50,10 @@ angular.module('app', [])
                 $http.get('https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/DisplayRunners.php?marketid='+ $scope.xmarketid).then(function(response1){
                 $scope.runnersList = response1.data.ratings;
                 
-                angular.forEach($scope.runnersList, function (runnerId, key) {
-                    runnerId = $scope.runnersList[key].id;
-                    console.log("RUNNERS ID: ",runnerId);
-                }); 
+                // angular.forEach($scope.runnersList, function (runnerId, key) {
+                //     runnerId = $scope.runnersList[key].id;
+                //     console.log("RUNNERS ID: ",runnerId);
+                // }); 
                 
                 $scope.groups = [{
                     "value": 100
@@ -103,9 +103,14 @@ angular.module('app', [])
         }
         
         $scope.updateData = function(id, rate){  
+            angular.forEach($scope.runnersList, function (runnerId, key) {
+                runnerId = $scope.runnersList[key].id;
+                $scope.runnerRating = $scope.runnersList[key].b4y_rating;
+                console.log("RUNNERS ID: ",runnerId);
+            });
             $http.get('https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/UpdateRating.php?selectionId='+ id +'&b4y_rating='+ rate).then(function(response1){
                 
-                console.log("SUCCESS", response1.data.message);
+                console.log("SUCCESS", response1);
                 
             })
        } 
