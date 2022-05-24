@@ -25,7 +25,7 @@ angular.module('app', [])
             $scope.finaldate = formatDate($scope.datedetails);
             //console.log("DATE: ",$scope.finaldate);
 
-            $http.get("https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/DisplayRating.php?day="+ $scope.finaldate).then(function (response) {
+            $http.get("https://www.hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ $scope.finaldate).then(function (response) {
                     
                     if(!Object.keys(response.data.races).length){
                         $scope.msg = "NO DATA AT THE MOMENT!!!";
@@ -47,13 +47,13 @@ angular.module('app', [])
                 $scope.xmarketid = $scope.x.marketId;
                 
 
-                $http.get('https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/DisplayRunners.php?marketid='+ $scope.xmarketid).then(function(response1){
-                $scope.runnersList = response1.data.ratings;
+                $http.get('https://www.hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(response1){
+                $scope.runnersList = response1.data.runners;
                 
-                // angular.forEach($scope.runnersList, function (runnerId, key) {
-                //     runnerId = $scope.runnersList[key].id;
-                //     console.log("RUNNERS ID: ",runnerId);
-                // }); 
+                angular.forEach($scope.runnersList, function (runnerId, key) {
+                    runnerId = $scope.runnersList[key].selectionId;
+                    console.log("RUNNERS ID: ",runnerId);
+                }); 
                 
                 $scope.groups = [{
                     "value": 100
@@ -103,17 +103,10 @@ angular.module('app', [])
         }
         
         $scope.updateData = function(id, rate){  
-            angular.forEach($scope.runnersList, function (runnerId, key) {
-                runnerId = $scope.runnersList[key].id;
-                $scope.runnerRating = $scope.runnersList[key].b4y_rating;
-                console.log("RUNNERS ID: ",runnerId);
-            });
             $http.get('https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/UpdateRating.php?selectionId='+ id +'&b4y_rating='+ rate).then(function(response1){
                 
-                console.log("SUCCESS", response1);
+                console.log("SUCCESS", response1.data.message);
                 
             })
        } 
     })
-
-    
