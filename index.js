@@ -1,3 +1,4 @@
+// ADDED CODE MAY 16, 2022
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -25,7 +26,7 @@ angular.module('app', [])
             $scope.finaldate = formatDate($scope.datedetails);
             //console.log("DATE: ",$scope.finaldate);
 
-            $http.get('/api/models/DisplayRating.php?day='+ $scope.finaldate).then(function (response) {
+            $http.get("https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/DisplayRating.php?day="+ $scope.finaldate).then(function (response) {
                     
                     if(!Object.keys(response.data.races).length){
                         $scope.msg = "NO DATA AT THE MOMENT!!!";
@@ -47,11 +48,11 @@ angular.module('app', [])
                 $scope.xmarketid = $scope.x.marketId;
                 
 
-                $http.get('/api/models/DisplayRunners.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(response1){
-                $scope.runnersList = response1.data.runners;
+                $http.get('https://bet4you.co.uk/wp-content/plugins/b4y_ratings/api/models/DisplayRunners.php?marketid='+ $scope.xmarketid).then(function(response1){
+                $scope.runnersList = response1.data.ratings;
                 
                 angular.forEach($scope.runnersList, function (runnerId, key) {
-                    runnerId = $scope.runnersList[key].selectionId;
+                    runnerId = $scope.runnersList[key].id;
                     console.log("RUNNERS ID: ",runnerId);
                 }); 
                 
