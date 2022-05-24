@@ -8,7 +8,7 @@ DEFINE('USER', 'root');
 DEFINE('PASSWORD', '');
 DEFINE('DB', 'horse_rating');
 
-$table_name = 'horse_rate';
+$table_name = 'horse_race';
 $conn = mysqli_connect(HOST, USER, PASSWORD, DB) or die('unable to connect DB');
 
 $day = '';

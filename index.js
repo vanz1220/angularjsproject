@@ -25,7 +25,7 @@ angular.module('app', [])
             $scope.finaldate = formatDate($scope.datedetails);
             //console.log("DATE: ",$scope.finaldate);
 
-            $http.get("https://www.hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaces&date="+ $scope.finaldate).then(function (response) {
+            $http.get('/api/models/DisplayRating.php?day='+ $scope.finaldate).then(function (response) {
                     
                     if(!Object.keys(response.data.races).length){
                         $scope.msg = "NO DATA AT THE MOMENT!!!";
@@ -47,7 +47,7 @@ angular.module('app', [])
                 $scope.xmarketid = $scope.x.marketId;
                 
 
-                $http.get('https://www.hedgerpro.co.uk/api/rpc/remote/b4y.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(response1){
+                $http.get('/api/models/DisplayRunners.php?action=getRaceRunners&marketId='+ $scope.xmarketid).then(function(response1){
                 $scope.runnersList = response1.data.runners;
                 
                 angular.forEach($scope.runnersList, function (runnerId, key) {
